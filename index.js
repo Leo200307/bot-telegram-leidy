@@ -180,7 +180,7 @@ Nos vemos dentro del VIP 🔥💎`,
             reply_markup: {
                 inline_keyboard: [
                     [{ text: '⬅️ Volver', callback_data: 'metodo_pago' }],
-                    [{ text: '✅ Enviar correo', url: 'https://t.me/agentedeinformacion' }]
+                    [{ text: '✅ Enviar captura', url: 'https://t.me/agentedeinformacion' }]
                 ]
             }
         }
