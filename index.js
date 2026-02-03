@@ -151,29 +151,42 @@ TODOS MIS MÉTODOS DE PAGO 🥰
             );
         }
 
-        // ===== PAYPAL =====
-        else if (query.data === 'paypal') {
-            await bot.editMessageMedia(
-                {
-                    type: 'photo',
-                    media: 'https://i.postimg.cc/5y4rgHF9/depositphotos-220680152-stock-illustration-paypal-logo-printed-white-paper.jpg',
-                    caption: `💳 **PAGO POR PAYPAL**
+       // ===== PAYPAL =====
+else if (query.data === 'paypal') {
+    await bot.editMessageMedia(
+        {
+            type: 'photo',
+            media: 'https://i.postimg.cc/5y4rgHF9/depositphotos-220680152-stock-illustration-paypal-logo-printed-white-paper.jpg',
+            caption: `✨💎 **SUSCRIPCIÓN GRUPO VIP** 💎✨
 
-📌 Monto: **10 USD**
-⬇️ Envía tu correo para el cobro ⬇️`,
-                },
-                {
-                    chat_id: chatId,
-                    message_id: messageId,
-                    reply_markup: {
-                        inline_keyboard: [
-                            [{ text: '⬅️ Volver', callback_data: 'metodo_pago' }],
-                            [{ text: '✅ Enviar correo', url: 'https://t.me/agentedeinformacion' }]
-                        ]
-                    }
-                }
-            );
+Si quieres suscribirte a mi **Grupo VIP** 💎 y acceder a **contenido exclusivo mío** 😘🔥, puedes hacerlo con un solo pago de:
+
+💰 **11.50 USD**
+
+💳 **PAGO POR PAYPAL** 💙
+
+📌 **Monto:** **11.50 USD**
+⬇️ Puedes pagar tu suscripción bb a este correo
+(es de un familiar mío) ⬇️
+
+📧 **Correo PayPal (copiar y pegar):**
+\`alejandrohinojosasoria237@gmail.com\`
+
+Nos vemos dentro del VIP 🔥💎`,
+        },
+        {
+            chat_id: chatId,
+            message_id: messageId,
+            reply_markup: {
+                inline_keyboard: [
+                    [{ text: '⬅️ Volver', callback_data: 'metodo_pago' }],
+                    [{ text: '✅ Enviar correo', url: 'https://t.me/agentedeinformacion' }]
+                ]
+            }
         }
+    );
+}
+
 
         // ===== VOLVER AL INICIO (EDITAR MENSAJE) =====
         else if (query.data === 'volver') {
