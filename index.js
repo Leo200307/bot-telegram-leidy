@@ -20,14 +20,11 @@ app.use(express.json());
 
 // ================== BOT WEBHOOK ==================
 const bot = new TelegramBot(TOKEN);
-
-// Webhook
 bot.setWebHook(`${URL}/bot${TOKEN}`);
 
 // ================== FUNCIÓN BIENVENIDA ==================
 function getWelcomeMessage() {
     return {
-        type: 'photo',
         media: 'https://i.postimg.cc/VvLRfKHs/img5.jpg',
         caption: `🙈 **LEIDYSITA😈**
 
@@ -40,7 +37,7 @@ Vamos al grano, ambos sabemos por qué estás aquí jeje 😏
 Y sí, la pasarás increíble en mi VIP 🫣🔥
 
 💙 **CON UNA PROPINA DE 10 DÓLARES**  
-Seras parte de mi comunidad mas especial,
+Serás parte de mi comunidad más especial,  
 Desbloqueas fotos y videos MUY exclusivos 🔥
 
 🔥 **𝗟𝗔 𝗦𝗨𝗦𝗖𝗥𝗜𝗣𝗖𝗜𝗢𝗡 𝗗𝗨𝗥𝗔 𝗨𝗡 𝗠𝗘𝗦**  
@@ -48,6 +45,7 @@ Tipo OnlyFans 😈
 (Contenido SOLO para suscriptores VIP)
 
 👇 Elige un método de pago para empezar`,
+        parse_mode: "Markdown",
         reply_markup: {
             inline_keyboard: [
                 [{ text: "💳 Método de pago", callback_data: "metodo_pago" }]
@@ -84,10 +82,16 @@ app.listen(PORT, () => {
     console.log(`🤖 Bot escuchando en puerto ${PORT}`);
 });
 
-// ================== /START ==================
+// ================== /START CORRECTO ==================
 bot.onText(/\/start/, async (msg) => {
     const chatId = msg.chat.id;
-    await bot.sendPhoto(chatId, getWelcomeMessage().media, getWelcomeMessage());
+    const welcome = getWelcomeMessage();
+
+    await bot.sendPhoto(chatId, welcome.media, {
+        caption: welcome.caption,
+        parse_mode: welcome.parse_mode,
+        reply_markup: welcome.reply_markup
+    });
 });
 
 // ================== BOTONES ==================
@@ -108,6 +112,7 @@ TODOS MIS MÉTODOS DE PAGO 🥰
 
 📌 **BOLIVIA 🇧🇴**
 📌 **EXTRANJERO 🌍**`,
+                    parse_mode: "Markdown"
                 },
                 {
                     chat_id: chatId,
@@ -132,8 +137,9 @@ TODOS MIS MÉTODOS DE PAGO 🥰
                     media: 'https://i.postimg.cc/Qxq9Dc28/Whats-App-Image-2026-02-02-at-11-46-52.jpg',
                     caption: `🇧🇴 **PAGAR 100 BS**
 
-📌 Saca una captura y pagalo por tu banca  
+📌 Saca una captura y págalo por tu banca  
 ⬇️ Envía el comprobante de recibo de pago⬇️`,
+                    parse_mode: "Markdown"
                 },
                 {
                     chat_id: chatId,
@@ -154,14 +160,13 @@ TODOS MIS MÉTODOS DE PAGO 🥰
                 {
                     type: 'photo',
                     media: 'https://i.postimg.cc/5y4rgHF9/depositphotos-220680152-stock-illustration-paypal-logo-printed-white-paper.jpg',
-                    caption: `✨💎 **SUSCRIPCIÓN GRUPO VIP** 💎✨
+                    caption: `💳 **PAGO POR PAYPAL**
 
-💰 **11.50 USD**
-💳 **PAGO POR PAYPAL**
-
+📌 Monto: **11.50 USD**  
 📧 \`alejandrohinojosasoria237@gmail.com\`
 
-Nos vemos dentro del VIP 🔥💎`,
+Envía tu captura después del pago 💎`,
+                    parse_mode: "Markdown"
                 },
                 {
                     chat_id: chatId,
@@ -169,7 +174,7 @@ Nos vemos dentro del VIP 🔥💎`,
                     reply_markup: {
                         inline_keyboard: [
                             [{ text: '⬅️ Volver', callback_data: 'metodo_pago' }],
-                            [{ text: '✅ Enviar captura', url: 'https://t.me/agentedeinformacion' }]
+                            [{ text: '📤 Enviar captura', url: 'https://t.me/agentedeinformacion' }]
                         ]
                     }
                 }
@@ -190,6 +195,7 @@ Nos vemos dentro del VIP 🔥💎`,
 2️⃣ Coloca tu correo  
 3️⃣ Ingresa tu tarjeta  
 4️⃣ Envía la captura`,
+                    parse_mode: "Markdown"
                 },
                 {
                     chat_id: chatId,
@@ -207,16 +213,19 @@ Nos vemos dentro del VIP 🔥💎`,
 
         // ===== VOLVER =====
         else if (query.data === 'volver') {
+            const welcome = getWelcomeMessage();
+
             await bot.editMessageMedia(
                 {
                     type: 'photo',
-                    media: getWelcomeMessage().media,
-                    caption: getWelcomeMessage().caption
+                    media: welcome.media,
+                    caption: welcome.caption,
+                    parse_mode: welcome.parse_mode
                 },
                 {
                     chat_id: chatId,
                     message_id: messageId,
-                    reply_markup: getWelcomeMessage().reply_markup
+                    reply_markup: welcome.reply_markup
                 }
             );
         }
