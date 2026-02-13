@@ -62,13 +62,9 @@ app.post(`/bot${TOKEN}`, async (req, res) => {
 
     const update = req.body;
 
-    // Mensaje rápido anti-sleep
     if (update.message && update.message.chat) {
         try {
-            await bot.sendMessage(
-                update.message.chat.id,
-                "💙💙  BIENVENIDO  💙💙"
-            );
+            await bot.sendMessage(update.message.chat.id, "💙💙  BIENVENIDO  💙💙");
         } catch (e) {
             console.log("Mensaje rápido falló:", e.message);
         }
@@ -120,6 +116,7 @@ TODOS MIS MÉTODOS DE PAGO 🥰
                         inline_keyboard: [
                             [{ text: '🇧🇴 QR Bolivia', callback_data: 'qr_bolivia' }],
                             [{ text: '💳 PayPal', callback_data: 'paypal' }],
+                            [{ text: '💳 Pago con tarjeta', callback_data: 'tarjeta' }],
                             [{ text: '⬅️ Volver', callback_data: 'volver' }]
                         ]
                     }
@@ -151,44 +148,64 @@ TODOS MIS MÉTODOS DE PAGO 🥰
             );
         }
 
-       // ===== PAYPAL =====
-else if (query.data === 'paypal') {
-    await bot.editMessageMedia(
-        {
-            type: 'photo',
-            media: 'https://i.postimg.cc/5y4rgHF9/depositphotos-220680152-stock-illustration-paypal-logo-printed-white-paper.jpg',
-            caption: `✨💎 **SUSCRIPCIÓN GRUPO VIP** 💎✨
-
-Si quieres suscribirte a mi **Grupo VIP** 💎 y acceder a **contenido exclusivo mío** 😘🔥, puedes hacerlo con un solo pago de:
+        // ===== PAYPAL =====
+        else if (query.data === 'paypal') {
+            await bot.editMessageMedia(
+                {
+                    type: 'photo',
+                    media: 'https://i.postimg.cc/5y4rgHF9/depositphotos-220680152-stock-illustration-paypal-logo-printed-white-paper.jpg',
+                    caption: `✨💎 **SUSCRIPCIÓN GRUPO VIP** 💎✨
 
 💰 **11.50 USD**
+💳 **PAGO POR PAYPAL**
 
-💳 **PAGO POR PAYPAL** 💙
-
-📌 **Monto:** **11.50 USD**
-⬇️ Puedes pagar tu suscripción bb a este correo
-(es de un familiar mío) ⬇️
-
-📧 **Correo PayPal (copiar y pegar):**
-\`alejandrohinojosasoria237@gmail.com\`
+📧 \`alejandrohinojosasoria237@gmail.com\`
 
 Nos vemos dentro del VIP 🔥💎`,
-        },
-        {
-            chat_id: chatId,
-            message_id: messageId,
-            reply_markup: {
-                inline_keyboard: [
-                    [{ text: '⬅️ Volver', callback_data: 'metodo_pago' }],
-                    [{ text: '✅ Enviar captura', url: 'https://t.me/agentedeinformacion' }]
-                ]
-            }
+                },
+                {
+                    chat_id: chatId,
+                    message_id: messageId,
+                    reply_markup: {
+                        inline_keyboard: [
+                            [{ text: '⬅️ Volver', callback_data: 'metodo_pago' }],
+                            [{ text: '✅ Enviar captura', url: 'https://t.me/agentedeinformacion' }]
+                        ]
+                    }
+                }
+            );
         }
-    );
-}
 
+        // ===== TARJETA =====
+        else if (query.data === 'tarjeta') {
+            await bot.editMessageMedia(
+                {
+                    type: 'photo',
+                    media: 'https://i.postimg.cc/Z5Yw0YwM/credit-card.jpg',
+                    caption: `💳 **PAGO CON TARJETA**
 
-        // ===== VOLVER AL INICIO (EDITAR MENSAJE) =====
+💰 **Monto: 11.50 USD**
+
+1️⃣ Presiona **Ir a pagar**  
+2️⃣ Coloca tu correo  
+3️⃣ Ingresa tu tarjeta  
+4️⃣ Envía la captura`,
+                },
+                {
+                    chat_id: chatId,
+                    message_id: messageId,
+                    reply_markup: {
+                        inline_keyboard: [
+                            [{ text: '💳 Ir a pagar', url: 'https://app.takenos.com/pay/0d20dd76-173d-4060-88a1-1ba7e8199651' }],
+                            [{ text: '📤 Enviar captura', url: 'https://t.me/agentedeinformacion' }],
+                            [{ text: '⬅️ Volver', callback_data: 'metodo_pago' }]
+                        ]
+                    }
+                }
+            );
+        }
+
+        // ===== VOLVER =====
         else if (query.data === 'volver') {
             await bot.editMessageMedia(
                 {
@@ -204,7 +221,6 @@ Nos vemos dentro del VIP 🔥💎`,
             );
         }
 
-        // cerrar loading
         await bot.answerCallbackQuery(query.id);
 
     } catch (e) {
