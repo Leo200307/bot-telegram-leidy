@@ -182,34 +182,35 @@ Envía tu captura después del pago 💎`,
         }
 
         // ===== TARJETA =====
-        else if (query.data === 'tarjeta') {
-            await bot.editMessageMedia(
-                {
-                    type: 'photo',
-                    media: 'https://i.postimg.cc/Z5Yw0YwM/credit-card.jpg',
-                    caption: `💳 **PAGO CON TARJETA**
+     else if (query.data === 'tarjeta') {
+    await bot.editMessageMedia(
+        {
+            type: 'photo',
+            media: 'https://i.postimg.cc/Z5Yw0YwM/credit-card.jpg',
+            caption: `💳 **PAGO CON TARJETA**
 
 💰 **Monto: 11.50 USD**
 
 1️⃣ Presiona **Ir a pagar**  
 2️⃣ Coloca tu correo  
 3️⃣ Ingresa tu tarjeta  
-4️⃣ Envía la captura`,
-                    parse_mode: "Markdown"
-                },
-                {
-                    chat_id: chatId,
-                    message_id: messageId,
-                    reply_markup: {
-                        inline_keyboard: [
-                            [{ text: '💳 Ir a pagar', url: 'https://app.takenos.com/pay/0d20dd76-173d-4060-88a1-1ba7e8199651' }],
-                            [{ text: '📤 Enviar captura', url: 'https://t.me/agentedeinformacion' }],
-                            [{ text: '⬅️ Volver', callback_data: 'metodo_pago' }]
-                        ]
-                    }
-                }
-            );
+4️⃣ Envía la captura`
+        },
+        {
+            chat_id: chatId,
+            message_id: messageId,
+            parse_mode: "Markdown",   // ✅ AQUÍ debe ir
+            reply_markup: {
+                inline_keyboard: [
+                    [{ text: '💳 Ir a pagar', url: 'https://app.takenos.com/pay/d46905c8-b22e-4425-864c-3d8e83dc0237' }],
+                    [{ text: '📤 Enviar captura', url: 'https://t.me/agentedeinformacion' }],
+                    [{ text: '⬅️ Volver', callback_data: 'metodo_pago' }]
+                ]
+            }
         }
+    );
+}
+
 
         // ===== VOLVER =====
         else if (query.data === 'volver') {
