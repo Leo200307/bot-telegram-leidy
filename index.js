@@ -199,7 +199,7 @@ La suscripción por tarjeta es de **16.50 USD**
                     message_id: messageId,
                     reply_markup: {
                         inline_keyboard: [
-                                  [{ text: '💳 Ir a pagar', url: 'https://app.takenos.com/pay/0d20dd76-173d-4060-88a1-1ba7e8199651' }],
+                                  [{ text: '💳 Ir a pagar', url: 'https://app.takenos.com/pay/e5952b04-22c3-44ec-a2e2-4b1d7d775222' }],
                             [{ text: '📤 Enviar captura', url: 'https://t.me/agentedeinformacion' }],
                             [{ text: '⬅️ Volver', callback_data: 'metodo_pago' }]
                         ]
