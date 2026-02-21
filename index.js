@@ -182,7 +182,7 @@ Envía tu captura después del pago 💎`,
             await bot.editMessageMedia(
                 {
                     type: 'photo',
-                    media: 'https://i.postimg.cc/NMF1X4FH/Screenshot_20260213_110627_Chrome.jpg',
+                    media: 'https://app.takenos.com/pay/e2d595aa-3308-4060-8f26-2f48cf013aa2',
                     caption: `💳 **SUSCRIPCIÓN CON TARJETA**
 
 La suscripción por tarjeta es de **16.50 USD**  
