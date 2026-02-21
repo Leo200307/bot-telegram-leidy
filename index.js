@@ -182,7 +182,7 @@ Envía tu captura después del pago 💎`,
             await bot.editMessageMedia(
                 {
                     type: 'photo',
-                    media: 'https://app.takenos.com/pay/e2d595aa-3308-4060-8f26-2f48cf013aa2',
+                    media: 'https://i.postimg.cc/NMF1X4FH/Screenshot_20260213_110627_Chrome.jpg',
                     caption: `💳 **SUSCRIPCIÓN CON TARJETA**
 
 La suscripción por tarjeta es de **16.50 USD**  
@@ -199,7 +199,7 @@ La suscripción por tarjeta es de **16.50 USD**
                     message_id: messageId,
                     reply_markup: {
                         inline_keyboard: [
-                                  [{ text: '💳 Ir a pagar', url: 'https://app.takenos.com/pay/e5952b04-22c3-44ec-a2e2-4b1d7d775222' }],
+                                  [{ text: '💳 Ir a pagar', url: 'https://app.takenos.com/pay/e2d595aa-3308-4060-8f26-2f48cf013aa2' }],
                             [{ text: '📤 Enviar captura', url: 'https://t.me/agentedeinformacion' }],
                             [{ text: '⬅️ Volver', callback_data: 'metodo_pago' }]
                         ]
