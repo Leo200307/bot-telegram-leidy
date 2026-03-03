@@ -26,9 +26,9 @@ bot.setWebHook(`${URL}/bot${TOKEN}`);
 function getWelcomeMessage() {
     return {
         media: 'https://i.postimg.cc/VvLRfKHs/img5.jpg',
-        caption: `🙈 *LEIDYSITA😈*
+        caption: `🙈 LEIDYSITA😈
 
-🔥 *𝗦𝗨𝗦𝗖𝗥𝗜𝗕𝗘𝗧𝗘😉 SEMANA DE PROMOCION🔥*
+🔥 SUSCRÍBETE 😉 SEMANA DE PROMOCIÓN 🔥
 
 Hola, me alegro de que finalmente me hayas encontrado 🔥🔥  
 ¿Quieres descubrir el contenido de mi canal VIP 🙈🔥?
@@ -36,11 +36,11 @@ Hola, me alegro de que finalmente me hayas encontrado 🔥🔥
 Vamos al grano, ambos sabemos por qué estás aquí jeje 😏  
 Y sí, la pasarás increíble en mi VIP 🫣🔥
 
-💙 *POR ESTA SEMANA CON UNA PROPINA DE 8.50 DÓLARES*  
+💙 POR ESTA SEMANA CON UNA PROPINA DE 8.50 DÓLARES  
 Serás parte de mi comunidad más especial,
 Desbloqueas fotos y videos MUY exclusivos 🔥
 
-🔥 *𝗟𝗔 𝗦𝗨𝗦𝗖𝗥𝗜𝗣𝗖𝗜𝗢𝗡 𝗗𝗨𝗥𝗔 𝗨𝗡 𝗠𝗘𝗦*  
+🔥 LA SUSCRIPCIÓN DURA UN MES  
 Tipo OnlyFans 😈  
 (Contenido SOLO para suscriptores VIP)
 
@@ -56,21 +56,7 @@ Tipo OnlyFans 😈
 // ================== WEBHOOK HANDLER ==================
 app.post(`/bot${TOKEN}`, async (req, res) => {
     res.sendStatus(200);
-
-    const update = req.body;
-
-    if (update.message && update.message.chat) {
-        try {
-            await bot.sendMessage(
-                update.message.chat.id,
-                "💙💙  BIENVENIDO  💙💙"
-            );
-        } catch (e) {
-            console.log("Mensaje rápido falló:", e.message);
-        }
-    }
-
-    bot.processUpdate(update);
+    bot.processUpdate(req.body);
 });
 
 // ================== ENDPOINT UPTIMEROBOT ==================
@@ -91,7 +77,6 @@ bot.onText(/\/start/, async (msg) => {
 
     await bot.sendPhoto(chatId, welcome.media, {
         caption: welcome.caption,
-        parse_mode: "Markdown",
         reply_markup: welcome.reply_markup
     });
 });
@@ -103,18 +88,16 @@ bot.on('callback_query', async (query) => {
 
     try {
 
-        // ===== MENÚ MÉTODOS =====
         if (query.data === 'metodo_pago') {
             await bot.editMessageMedia(
                 {
                     type: 'photo',
                     media: 'https://i.postimg.cc/t4Vz4ZDD/img6.jpg',
-                    caption: `𝗛𝗢𝗟𝗜 💕🔥
+                    caption: `HOLI 💕🔥
 TODOS MIS MÉTODOS DE PAGO 🥰
 
-📌 *BOLIVIA 🇧🇴*
-📌 *EXTRANJERO 🌍*`,
-                    parse_mode: "Markdown"
+📌 BOLIVIA 🇧🇴
+📌 EXTRANJERO 🌍`
                 },
                 {
                     chat_id: chatId,
@@ -131,17 +114,15 @@ TODOS MIS MÉTODOS DE PAGO 🥰
             );
         }
 
-        // ===== QR BOLIVIA =====
         else if (query.data === 'qr_bolivia') {
             await bot.editMessageMedia(
                 {
                     type: 'photo',
                     media: 'https://i.postimg.cc/c4BP16y9/IMG-20260302-WA0009.jpg',
-                    caption: `🇧🇴 *POR ESTA SEMANA PAGA 75 BS*
+                    caption: `🇧🇴 POR ESTA SEMANA PAGA 75 BS
 
 📌 Saca una captura y págalo por tu banca  
-⬇️ Envía el comprobante de pago ⬇️`,
-                    parse_mode: "Markdown"
+⬇️ Envía el comprobante de pago ⬇️`
                 },
                 {
                     chat_id: chatId,
@@ -159,19 +140,17 @@ TODOS MIS MÉTODOS DE PAGO 🥰
             );
         }
 
-        // ===== PAYPAL =====
         else if (query.data === 'paypal') {
             await bot.editMessageMedia(
                 {
                     type: 'photo',
                     media: 'https://i.postimg.cc/5y4rgHF9/depositphotos-220680152-stock-illustration-paypal-logo-printed-white-paper.jpg',
-                    caption: `💳 *PAGO POR PAYPAL*
+                    caption: `💳 PAGO POR PAYPAL
 
-📌 Monto: *8.50 USD*
-📧 alejandrohinojosasoria237@gmail.com
+Monto: 8.50 USD
+Correo: alejandrohinojosasoria237@gmail.com
 
-Envía tu captura después del pago 💎`,
-                    parse_mode: "Markdown"
+Envía tu captura después del pago 💎`
                 },
                 {
                     chat_id: chatId,
@@ -189,21 +168,19 @@ Envía tu captura después del pago 💎`,
             );
         }
 
-        // ===== TARJETA =====
         else if (query.data === 'tarjeta') {
             await bot.editMessageMedia(
                 {
                     type: 'photo',
                     media: 'https://i.postimg.cc/NMF1X4FH/Screenshot_20260213_110627_Chrome.jpg',
-                    caption: `💳 *SUSCRIPCIÓN CON TARJETA*
+                    caption: `💳 SUSCRIPCIÓN CON TARJETA
 
-Monto: *8.50 USD*
+Monto: 8.50 USD
 
-1️⃣ Presiona *Ir a pagar*  
+1️⃣ Presiona Ir a pagar  
 2️⃣ Coloca tu correo  
 3️⃣ Ingresa los datos de tu tarjeta  
-4️⃣ Envía la captura`,
-                    parse_mode: "Markdown"
+4️⃣ Envía la captura`
                 },
                 {
                     chat_id: chatId,
@@ -222,7 +199,6 @@ Monto: *8.50 USD*
             );
         }
 
-        // ===== VOLVER =====
         else if (query.data === 'volver') {
             const welcome = getWelcomeMessage();
 
@@ -230,8 +206,7 @@ Monto: *8.50 USD*
                 {
                     type: 'photo',
                     media: welcome.media,
-                    caption: welcome.caption,
-                    parse_mode: "Markdown"
+                    caption: welcome.caption
                 },
                 {
                     chat_id: chatId,
