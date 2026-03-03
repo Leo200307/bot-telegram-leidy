@@ -28,8 +28,8 @@ bot.setWebHook(`${URL}/bot${TOKEN}`);
 function getWelcomeMessage() {
     return {
         type: 'photo',
-        media: 'https://i.postimg.cc/Z54nVQn9/img2.jpg',
-        caption: `🙈 *NATHALY JESSIC😈*
+        media: 'https://i.postimg.cc/VvLRfKHs/img5.jpg',
+        caption: `🙈 *LEIDISYTA😈*
 
 🔥 **𝗦𝗨𝗦𝗖𝗥𝗜𝗕𝗘𝗧𝗘😉 SEMANA PROMOCIONAL🔥**
 
@@ -39,7 +39,7 @@ Hola, me alegro de que finalmente me hayas encontrado 🔥🔥
 Vamos al grano, ambos sabemos por qué estás aquí jeje 😏  
 Y sí, la pasarás increíble en mi VIP 🫣🔥
 
-💙 **POR ESTA SEMANA CON UNA PROPINA DE 10.50 DÓLARES**  
+💙 **POR ESTA SEMANA CON UNA PROPINA DE 8.50 DÓLARES**  
 Seras parte de mi comunidad mas especial,
 Desbloqueas fotos y videos MUY exclusivos 🔥
 
@@ -105,7 +105,7 @@ bot.on('callback_query', async (query) => {
             await bot.editMessageMedia(
                 {
                     type: 'photo',
-                      media: 'https://i.postimg.cc/28fSStQ3/img5.jpg',
+                      media: 'https://i.postimg.cc/t4Vz4ZDD/img6.jpg',
                     caption: `𝗛𝗢𝗟𝗜 💕🔥
 TODOS MIS MÉTODOS DE PAGO 🥰
 
@@ -132,7 +132,7 @@ TODOS MIS MÉTODOS DE PAGO 🥰
             await bot.editMessageMedia(
                 {
                     type: 'photo',
-                      media: 'https://i.postimg.cc/jS9KHCgV/IMG-20260302-WA0019.jpg',
+                      media: 'https://i.postimg.cc/c4BP16y9/IMG_20260302_WA0009.jpg',
                     caption: `🇧🇴 *POR ESTA SEMANA PAGA 75 BS*
 
 📌 Saca una captura y pagalo por tu banca  
@@ -162,7 +162,7 @@ TODOS MIS MÉTODOS DE PAGO 🥰
                     media: 'https://i.postimg.cc/5y4rgHF9/depositphotos-220680152-stock-illustration-paypal-logo-printed-white-paper.jpg',
                     caption: `💳 **PAGO POR PAYPAL**
 
-📌 Monto: POR ESTA SEMANA **10 USD**
+📌 Monto: POR ESTA SEMANA **8.50 USD**
 📧 \`alejandrohinojosasoria237@gmail.com\`
 
 Envía tu captura después del pago 💎`,
@@ -191,7 +191,7 @@ Envía tu captura después del pago 💎`,
                     media: 'https://i.postimg.cc/NMF1X4FH/Screenshot_20260213_110627_Chrome.jpg',
                     caption: `💳 **SUSCRIPCIÓN CON TARJETA**
 
-La suscripción por tarjeta. POR ESTA SEMANA es de **11 USD**  
+La suscripción por tarjeta. POR ESTA SEMANA es de **9 USD**  
 
 **Pasos para pagar:**
 
@@ -205,7 +205,7 @@ La suscripción por tarjeta. POR ESTA SEMANA es de **11 USD**
                     message_id: messageId,
                     reply_markup: {
                         inline_keyboard: [
-                                  [{ text: '💳 Ir a pagar', url: 'https://app.takenos.com/pay/9916423b-7296-4566-b5cc-79e3246b917c' }],
+                                  [{ text: '💳 Ir a pagar', url: 'https://app.takenos.com/pay/664ed8b3-8291-486c-80b2-4324715b6426' }],
                             [{ 
   text: '📤 Enviar captura', 
   url: 'https://t.me/agentedeinformacion?text=Hola%20Nathaly,%20te%20mando%20la%20captura,%20pagué%20con%20tarjeta' 
