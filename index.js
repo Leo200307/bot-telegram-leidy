@@ -118,7 +118,7 @@ TODOS MIS MÉTODOS DE PAGO 🥰
             await bot.editMessageMedia(
                 {
                     type: 'photo',
-                    media: 'https://i.postimg.cc/c4BP16y9/IMG-20260302-WA0009.jpg',
+                    media: 'https://i.postimg.cc/jS9KHCgV/IMG-20260302-WA0019.jpg',
                     caption: `🇧🇴 POR ESTA SEMANA PAGA 75 BS
 
 📌 Saca una captura y págalo por tu banca  
