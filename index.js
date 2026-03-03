@@ -20,15 +20,18 @@ app.use(express.json());
 
 // ================== BOT WEBHOOK ==================
 const bot = new TelegramBot(TOKEN);
+
+// Webhook
 bot.setWebHook(`${URL}/bot${TOKEN}`);
 
 // ================== FUNCIÓN BIENVENIDA ==================
 function getWelcomeMessage() {
     return {
-        media: 'https://i.postimg.cc/VvLRfKHs/img5.jpg',
-        caption: `🙈 LEIDYSITA😈
+        type: 'photo',
+        media: 'https://i.postimg.cc/Z54nVQn9/img2.jpg',
+        caption: `🙈 *NATHALY JESSIC😈*
 
-🔥 SUSCRÍBETE 😉 SEMANA DE PROMOCIÓN 🔥
+🔥 **𝗦𝗨𝗦𝗖𝗥𝗜𝗕𝗘𝗧𝗘😉 SEMANA PROMOCIONAL🔥**
 
 Hola, me alegro de que finalmente me hayas encontrado 🔥🔥  
 ¿Quieres descubrir el contenido de mi canal VIP 🙈🔥?
@@ -36,11 +39,11 @@ Hola, me alegro de que finalmente me hayas encontrado 🔥🔥
 Vamos al grano, ambos sabemos por qué estás aquí jeje 😏  
 Y sí, la pasarás increíble en mi VIP 🫣🔥
 
-💙 POR ESTA SEMANA CON UNA PROPINA DE 8.50 DÓLARES  
-Serás parte de mi comunidad más especial,
+💙 **POR ESTA SEMANA CON UNA PROPINA DE 10.50 DÓLARES**  
+Seras parte de mi comunidad mas especial,
 Desbloqueas fotos y videos MUY exclusivos 🔥
 
-🔥 LA SUSCRIPCIÓN DURA UN MES  
+🔥 **𝗟𝗔 𝗦𝗨𝗦𝗖𝗥𝗜𝗣𝗖𝗜𝗢𝗡 𝗗𝗨𝗥𝗔 𝗨𝗡 𝗠𝗘𝗦**  
 Tipo OnlyFans 😈  
 (Contenido SOLO para suscriptores VIP)
 
@@ -56,7 +59,21 @@ Tipo OnlyFans 😈
 // ================== WEBHOOK HANDLER ==================
 app.post(`/bot${TOKEN}`, async (req, res) => {
     res.sendStatus(200);
-    bot.processUpdate(req.body);
+
+    const update = req.body;
+
+    if (update.message && update.message.chat) {
+        try {
+            await bot.sendMessage(
+                update.message.chat.id,
+                "💙💙  BIENVENIDO  💙💙"
+            );
+        } catch (e) {
+            console.log("Mensaje rápido falló:", e.message);
+        }
+    }
+
+    bot.processUpdate(update);
 });
 
 // ================== ENDPOINT UPTIMEROBOT ==================
@@ -73,12 +90,7 @@ app.listen(PORT, () => {
 // ================== /START ==================
 bot.onText(/\/start/, async (msg) => {
     const chatId = msg.chat.id;
-    const welcome = getWelcomeMessage();
-
-    await bot.sendPhoto(chatId, welcome.media, {
-        caption: welcome.caption,
-        reply_markup: welcome.reply_markup
-    });
+    await bot.sendPhoto(chatId, getWelcomeMessage().media, getWelcomeMessage());
 });
 
 // ================== BOTONES ==================
@@ -88,16 +100,17 @@ bot.on('callback_query', async (query) => {
 
     try {
 
+        // ===== MENÚ MÉTODOS =====
         if (query.data === 'metodo_pago') {
             await bot.editMessageMedia(
                 {
                     type: 'photo',
-                    media: 'https://i.postimg.cc/t4Vz4ZDD/img6.jpg',
-                    caption: `HOLI 💕🔥
+                      media: 'https://i.postimg.cc/28fSStQ3/img5.jpg',
+                    caption: `𝗛𝗢𝗟𝗜 💕🔥
 TODOS MIS MÉTODOS DE PAGO 🥰
 
-📌 BOLIVIA 🇧🇴
-📌 EXTRANJERO 🌍`
+📌 **BOLIVIA 🇧🇴**
+📌 **EXTRANJERO 🌍**`,
                 },
                 {
                     chat_id: chatId,
@@ -114,15 +127,16 @@ TODOS MIS MÉTODOS DE PAGO 🥰
             );
         }
 
+        // ===== QR BOLIVIA =====
         else if (query.data === 'qr_bolivia') {
             await bot.editMessageMedia(
                 {
                     type: 'photo',
-                    media: 'https://i.postimg.cc/jS9KHCgV/IMG-20260302-WA0019.jpg',
-                    caption: `🇧🇴 POR ESTA SEMANA PAGA 75 BS
+                      media: 'https://i.postimg.cc/jS9KHCgV/IMG-20260302-WA0019.jpg',
+                    caption: `🇧🇴 *POR ESTA SEMANA PAGA 75 BS*
 
-📌 Saca una captura y págalo por tu banca  
-⬇️ Envía el comprobante de pago ⬇️`
+📌 Saca una captura y pagalo por tu banca  
+⬇️ Envía el comprobante de recibo de pago⬇️`,
                 },
                 {
                     chat_id: chatId,
@@ -130,27 +144,28 @@ TODOS MIS MÉTODOS DE PAGO 🥰
                     reply_markup: {
                         inline_keyboard: [
                             [{ text: '⬅️ Volver', callback_data: 'metodo_pago' }],
-                            [{
-                                text: '✅ Ya pagué',
-                                url: 'https://t.me/agentedeinformacion?text=Hola%20Leidy,%20te%20mando%20la%20captura,%20pagué%20por%20QR%20Bolivia'
-                            }]
+                            [{ 
+  text: '✅ Ya pagué', 
+  url: 'https://t.me/agentedeinformacion?text=Hola%20Nathaly,%20te%20mando%20la%20captura,%20pagué%20por%20QR%20Bolivia' 
+}]
                         ]
                     }
                 }
             );
         }
 
+        // ===== PAYPAL =====
         else if (query.data === 'paypal') {
             await bot.editMessageMedia(
                 {
                     type: 'photo',
                     media: 'https://i.postimg.cc/5y4rgHF9/depositphotos-220680152-stock-illustration-paypal-logo-printed-white-paper.jpg',
-                    caption: `💳 PAGO POR PAYPAL
+                    caption: `💳 **PAGO POR PAYPAL**
 
-Monto: 8.50 USD
-Correo: alejandrohinojosasoria237@gmail.com
+📌 Monto: POR ESTA SEMANA **10 USD**
+📧 \`alejandrohinojosasoria237@gmail.com\`
 
-Envía tu captura después del pago 💎`
+Envía tu captura después del pago 💎`,
                 },
                 {
                     chat_id: chatId,
@@ -158,40 +173,43 @@ Envía tu captura después del pago 💎`
                     reply_markup: {
                         inline_keyboard: [
                             [{ text: '⬅️ Volver', callback_data: 'metodo_pago' }],
-                            [{
-                                text: '✅ Enviar captura',
-                                url: 'https://t.me/agentedeinformacion?text=Hola%20Leidy,%20te%20mando%20la%20captura,%20pagué%20por%20PayPal'
-                            }]
+                            [{ 
+  text: '✅ Enviar captura', 
+  url: 'https://t.me/agentedeinformacion?text=Hola%20Nathaly,%20te%20mando%20la%20captura,%20pagué%20por%20PayPal' 
+}]
                         ]
                     }
                 }
             );
         }
 
+        // ===== PAGO CON TARJETA =====
         else if (query.data === 'tarjeta') {
             await bot.editMessageMedia(
                 {
                     type: 'photo',
                     media: 'https://i.postimg.cc/NMF1X4FH/Screenshot_20260213_110627_Chrome.jpg',
-                    caption: `💳 SUSCRIPCIÓN CON TARJETA
+                    caption: `💳 **SUSCRIPCIÓN CON TARJETA**
 
-Monto: 8.50 USD
+La suscripción por tarjeta. POR ESTA SEMANA es de **11 USD**  
 
-1️⃣ Presiona Ir a pagar  
-2️⃣ Coloca tu correo  
+**Pasos para pagar:**
+
+1️⃣ Presiona el botón **Ir a pagar**  
+2️⃣ Coloca tu correo (recibirás un código)  
 3️⃣ Ingresa los datos de tu tarjeta  
-4️⃣ Envía la captura`
+4️⃣ Envía la captura de la transacción`,
                 },
                 {
                     chat_id: chatId,
                     message_id: messageId,
                     reply_markup: {
                         inline_keyboard: [
-                            [{ text: '💳 Ir a pagar', url: 'https://app.takenos.com/pay/664ed8b3-8291-486c-80b2-4324715b6426' }],
-                            [{
-                                text: '✅ Enviar captura',
-                                url: 'https://t.me/agentedeinformacion?text=Hola%20Leidy,%20te%20mando%20la%20captura,%20pagué%20con%20Tarjeta'
-                            }],
+                                  [{ text: '💳 Ir a pagar', url: 'https://app.takenos.com/pay/9916423b-7296-4566-b5cc-79e3246b917c' }],
+                            [{ 
+  text: '📤 Enviar captura', 
+  url: 'https://t.me/agentedeinformacion?text=Hola%20Nathaly,%20te%20mando%20la%20captura,%20pagué%20con%20tarjeta' 
+}],
                             [{ text: '⬅️ Volver', callback_data: 'metodo_pago' }]
                         ]
                     }
@@ -199,19 +217,18 @@ Monto: 8.50 USD
             );
         }
 
+        // ===== VOLVER AL INICIO =====
         else if (query.data === 'volver') {
-            const welcome = getWelcomeMessage();
-
             await bot.editMessageMedia(
                 {
                     type: 'photo',
-                    media: welcome.media,
-                    caption: welcome.caption
+                    media: getWelcomeMessage().media,
+                    caption: getWelcomeMessage().caption
                 },
                 {
                     chat_id: chatId,
                     message_id: messageId,
-                    reply_markup: welcome.reply_markup
+                    reply_markup: getWelcomeMessage().reply_markup
                 }
             );
         }
@@ -219,6 +236,6 @@ Monto: 8.50 USD
         await bot.answerCallbackQuery(query.id);
 
     } catch (e) {
-        console.log('❌ Error:', e.response?.body || e.message);
+        console.log('❌ Error:', e.description || e.message);
     }
 });
