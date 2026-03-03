@@ -54,9 +54,23 @@ Tipo OnlyFans 😈
 }
 
 // ================== WEBHOOK HANDLER ==================
-app.post(`/bot${TOKEN}`, (req, res) => {
+app.post(`/bot${TOKEN}`, async (req, res) => {
     res.sendStatus(200);
-    bot.processUpdate(req.body);
+
+    const update = req.body;
+
+    if (update.message && update.message.chat) {
+        try {
+            await bot.sendMessage(
+                update.message.chat.id,
+                "💙💙  BIENVENIDO  💙💙"
+            );
+        } catch (e) {
+            console.log("Mensaje rápido falló:", e.message);
+        }
+    }
+
+    bot.processUpdate(update);
 });
 
 // ================== ENDPOINT UPTIMEROBOT ==================
