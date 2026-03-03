@@ -29,7 +29,7 @@ function getWelcomeMessage() {
     return {
         type: 'photo',
         media: 'https://i.postimg.cc/KvHFhJX7/img5.jpg',
-        caption: `🙈 *LEIDISYTA😈*
+        caption: `🙈 *LEIDYSITA😈*
 
 🔥 **𝗦𝗨𝗦𝗖𝗥𝗜𝗕𝗘𝗧𝗘😉 SEMANA PROMOCIONAL🔥**
 
