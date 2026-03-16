@@ -202,7 +202,7 @@ La suscripción por tarjeta es de **16.50 USD**
                     message_id: messageId,
                     reply_markup: {
                         inline_keyboard: [
-                                  [{ text: '💳 Ir a pagar', url: 'https://app.takenos.com/pay/664ed8b3-8291-486c-80b2-4324715b6426' }],
+                                  [{ text: '💳 Ir a pagar', url: 'https://app.takenos.com/pay/f7a22b0d-c478-4d10-9cd7-26f599e36367' }],
                             [{ 
   text: '📤 Enviar captura', 
   url: 'https://t.me/agentedeinformacion?text=Hola%20Leidy,%20te%20mando%20la%20captura,%20pagué%20con%20tarjeta' 
