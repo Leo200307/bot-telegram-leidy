@@ -130,8 +130,8 @@ TODOS MIS MÉTODOS DE PAGO 🥰
             await bot.editMessageMedia(
                 {
                     type: 'photo',
-                      media: 'https://i.postimg.cc/59hszhDw/IMG_20260315_WA0025.jpg',
-                    caption: `🇧🇴 * PAGA 100 BS*
+                      media: 'https://i.postimg.cc/4d36GYdn/IMG-20260706-WA0118.jpg',
+                    caption: `🇧🇴 * PAGA 150 BS*
 
 📌 Saca una captura y pagalo por tu banca  
 ⬇️ Envía el comprobante de recibo de pago⬇️`,
@@ -160,7 +160,7 @@ TODOS MIS MÉTODOS DE PAGO 🥰
                     media: 'https://i.postimg.cc/5y4rgHF9/depositphotos-220680152-stock-illustration-paypal-logo-printed-white-paper.jpg',
                     caption: `💳 **PAGO POR PAYPAL**
 
-📌 Monto: **16.50 USD**
+📌 Monto: **20 USD**
 📧 \`alejandrohinojosasoria237@gmail.com\`
 
 Envía tu captura después del pago 💎`,
@@ -189,7 +189,7 @@ Envía tu captura después del pago 💎`,
                     media: 'https://i.postimg.cc/NMF1X4FH/Screenshot_20260213_110627_Chrome.jpg',
                     caption: `💳 **SUSCRIPCIÓN CON TARJETA**
 
-La suscripción por tarjeta es de **16.50 USD**  
+La suscripción por tarjeta es de **20 USD**  
 
 **Pasos para pagar:**
 
@@ -224,7 +224,7 @@ La suscripción por tarjeta es de **16.50 USD**
                     media: 'https://i.postimg.cc/CKtg2Szr/qr-image-1782236712160.png',
                     caption: `💳 **PAGO POR BINANCE**
 
-📌 Monto: **16.50 USDT**
+📌 Monto: **20 USDT**
 
 Envía tu captura después del pago 💎`,
                 },
