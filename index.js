@@ -193,20 +193,22 @@ La suscripción por tarjeta es de **20 USD**
 
 **Pasos para pagar:**
 
-1️⃣ Presiona el botón **Ir a pagar**  
-2️⃣ Coloca tu correo (recibirás un código)  
-3️⃣ Ingresa los datos de tu tarjeta  
-4️⃣ Envía la captura de la transacción`,
+1️⃣ enviame tu nombre y apellido
+(el nombre debe ser el mismo con el que pagaras la tarjeta, si no 
+te rechazara el pago)
+una ves enviado tu nombre a mi chat, te generare el link de pago.
+
+ `,
                 },
                 {
                     chat_id: chatId,
                     message_id: messageId,
                     reply_markup: {
                         inline_keyboard: [
-                                  [{ text: '💳 Ir a pagar', url: 'https://app.takenos.com/pay/e79f3b13-4fea-442d-b8e2-ceb9190af2c3' }],
+                                
                             [{ 
-  text: '📤 Enviar captura', 
-  url: 'https://t.me/agentedeinformacion?text=Hola%20Leidy,%20te%20mando%20la%20captura,%20pagué%20con%20tarjeta' 
+  text: '📤 Enviar mi nombre', 
+  url: 'https://t.me/agentedeinformacion?text=Hola%20Leidy,%20te%20mando%20la%20mi,%20nombre%20generame%20el%20link' 
 }],
                             [{ text: '⬅️ Volver', callback_data: 'metodo_pago' }]
                         ]
