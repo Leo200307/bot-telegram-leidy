@@ -208,7 +208,7 @@ una ves enviado tu nombre a mi chat, te generare el link de pago.
                                 
                             [{ 
   text: '📤 Enviar mi nombre', 
-  url: 'https://t.me/agentedeinformacion?text=Hola%20Leidy,%20te%20mando%20la%20mi,%20nombre%20generame%20el%20link' 
+  url: 'https://t.me/agentedeinformacion?text=Hola%20Leidy,%20te%20mando%20mi,%20nombre,%20generame%20el%20link' 
 }],
                             [{ text: '⬅️ Volver', callback_data: 'metodo_pago' }]
                         ]
